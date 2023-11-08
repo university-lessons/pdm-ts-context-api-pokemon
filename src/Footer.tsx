@@ -1,14 +1,17 @@
-import React, { useContext } from "react";
-import { Alert, Button, Text, View } from "react-native";
-import { AppContext } from "./contexts/AppContext";
+import React from "react";
+import { Alert, Button, View } from "react-native";
+import { usePokemonContext } from "./contexts/PokemonContext";
 
 export default function Footer() {
-  const appContext = useContext(AppContext);
+  const { catchPokemon, pokeballs } = usePokemonContext();
 
   const handleThrow = () => {
-    if (Math.random() > 0.5) {
-      appContext.setPokemons(appContext.pokemons + 1);
-    } else {
+    if (pokeballs == 0) {
+      Alert.alert("compre mais pokebolas!");
+      return;
+    }
+
+    if (!catchPokemon()) {
       Alert.alert("miss!!");
     }
   };

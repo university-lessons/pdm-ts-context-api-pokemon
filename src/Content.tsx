@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
-import { View, Text } from "react-native";
-import { AppContext } from "./contexts/AppContext";
+import React from "react";
+import { Text, View } from "react-native";
 import SubComponent from "./SubComponent";
+import { usePokemonContext } from "./contexts/PokemonContext";
 
 export default function Content() {
-  const appContext = useContext(AppContext);
+  const { pokeballs, pokemons } = usePokemonContext();
 
   return (
     <View>
       <Text>Pokemon App</Text>
-      <Text>Pokebolas: {appContext.pokebolas}</Text>
-      <Text>Pokemons: {appContext.pokemons}</Text>
+      <Text>Pokebolas: {pokeballs}</Text>
+      <Text>Pokemons: {pokemons}</Text>
 
       <SubComponent />
     </View>
