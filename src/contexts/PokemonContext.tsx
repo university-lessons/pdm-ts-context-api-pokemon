@@ -7,6 +7,7 @@ interface PokemonContextProps {
   buyPokeballs: (amount: number) => void;
   pokemons: number;
   catchPokemon: () => boolean;
+  name: string;
 }
 
 const PokemonContext = createContext<PokemonContextProps | undefined>(
@@ -35,11 +36,14 @@ export default function PokemonContextProvider({
     setPokeballs((val) => val + amount);
   };
 
+  const name = "Ash";
+
   const value: PokemonContextProps = {
     pokeballs,
     pokemons,
     catchPokemon,
     buyPokeballs,
+    name,
   };
 
   return (
